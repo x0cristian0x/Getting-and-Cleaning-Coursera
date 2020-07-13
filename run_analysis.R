@@ -50,8 +50,11 @@ activity_labels<-read.table("UCI HAR Dataset/activity_labels.txt")
 Total$Actividad<-factor(Total$Actividad,levels = activity_labels$V1,
                         labels = activity_labels$V2)
 
-View(Total)
+View(Total) 
 
+### 4th finished
+#write.table(Total,file = "data_4th_step.txt",row.names = FALSE)
+##
 
 
 ########
@@ -74,8 +77,7 @@ second_data <- second_data %>%
 View(second_data)
 
 # save data in txt with name=coursera_project
-write.table(second_data,file = "coursera_project.txt",row.names = FALSE)
-
+write.table(second_data,file = "data_5th_step_finished.txt",row.names = FALSE)
 
 
 
