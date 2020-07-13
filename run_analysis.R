@@ -73,3 +73,9 @@ second_data <- second_data %>%
 
 View(second_data)
 
+# save data in txt with name=coursera_project
+write.table(second_data,file = "coursera_project.txt",row.names = FALSE)
+
+
+
+
