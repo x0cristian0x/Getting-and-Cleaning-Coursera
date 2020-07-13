@@ -4,17 +4,33 @@ library(dplyr)
 
 ####
 # First download the archive .rar, later extract the data of archive.
-###
+
+# Create directory to hold downloaded data
+if (!file.exists("./Project R")) 
+{dir.create("./Project R")}
+
+# Set directory variables
+dirMain <- getwd()
+path <- file.path(dirMain, "Project R")
+
+# Download zip file
+download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip",
+              destfile = "./Project R.zip",
+              overwrite = T)
+
+# Unzip file into data directory
+unzip(zipfile = "./Project R.zip", exdir = "./Project R")
+
 
 # Read data of test and train
-X_test<-read.csv("UCI HAR Dataset/test/X_test.txt",header = F,sep = "")
-X_train<-read.csv("UCI HAR Dataset/train/X_train.txt",header = F,sep = "")
+X_test<-read.csv("Project R/UCI HAR Dataset/test/X_test.txt",header = F,sep = "")
+X_train<-read.csv("Project R/UCI HAR Dataset/train/X_train.txt",header = F,sep = "")
 
-Y_test<-read.csv("UCI HAR Dataset/test/Y_test.txt",header = F,sep = "")
-Y_train<-read.csv("UCI HAR Dataset/train/Y_train.txt",header = F,sep = "")
+Y_test<-read.csv("Project R/UCI HAR Dataset/test/Y_test.txt",header = F,sep = "")
+Y_train<-read.csv("Project R/UCI HAR Dataset/train/Y_train.txt",header = F,sep = "")
 
-subject_test<-read.csv("UCI HAR Dataset/test/subject_test.txt",header = F,sep = "")
-subject_train<-read.csv("UCI HAR Dataset/train/subject_train.txt",header = F,sep = "")
+subject_test<-read.csv("Project R/UCI HAR Dataset/test/subject_test.txt",header = F,sep = "")
+subject_train<-read.csv("Project R/UCI HAR Dataset/train/subject_train.txt",header = F,sep = "")
 
 
 # bind data
@@ -28,7 +44,7 @@ rm(X_test,X_train,Y_test,Y_train,subject_test,subject_train)
 Total<-rbind(train_total,test_total)
 
 # Read labels
-Etiquetas<-read.csv("UCI HAR Dataset/features.txt",sep = "",header = F)
+Etiquetas<-read.csv("Project R/UCI HAR Dataset/features.txt",sep = "",header = F)
 Etiquetas<-Etiquetas[,2]
 
 # add ID and activity to the labels
@@ -46,7 +62,7 @@ col_std<-grep("std",names(Total))
 Total<-Total[,c(1,2,col_mean,col_std)]
 
 # add "Activity_labels"
-activity_labels<-read.table("UCI HAR Dataset/activity_labels.txt")
+activity_labels<-read.table("Project R/UCI HAR Dataset/activity_labels.txt")
 Total$Actividad<-factor(Total$Actividad,levels = activity_labels$V1,
                         labels = activity_labels$V2)
 
@@ -78,6 +94,5 @@ View(second_data)
 
 # save data in txt with name=coursera_project
 write.table(second_data,file = "data_5th_step_finished.txt",row.names = FALSE)
-
 
 
