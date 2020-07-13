@@ -62,19 +62,3 @@ The different variable names contain information about its meaning by combining 
 
 12. **std()** indicates that the measurement is a standard deviation in the original dataset.
 
-
-# Names data
-## X_test<- Data of X test
-## X_train<- Data of X train
-
-## Y_test<- Data of Y test
-## Y_train<- Data of Y train
-
-## subject_test <- ID of the subjects
-## subject_train <- ID of the subjects
-
-## Etiquetas<- Data label
-## Actividad<- Activity label
-
-## Total <- final result of the fourth step
-## second_data<- final result of the fifth step
