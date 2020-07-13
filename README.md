@@ -14,4 +14,4 @@ Getting and Cleaning Data Course Project
 ## Actividad<- Activity label
 
 ## Total <- final result of the fourth step
-#v second_data<- final result of the fifth step
+## second_data<- final result of the fifth step
